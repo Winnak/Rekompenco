@@ -47,7 +47,8 @@ if(Rekompenco.Utility.HasAchievement("BURGER_GAME_1000_ATE")) {
     // Your game code here ... Example:
     philip.Say("Wow you must really like burgers");
     // ...
-}```
+}
+```
 
 ```cpp
 //C++ (TODO)
