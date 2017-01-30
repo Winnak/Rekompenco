@@ -55,11 +55,12 @@ namespace Rekompenco
         /// Describes what kind of data the <see cref="Data"/>-field is.
         /// Please check https://github.com/Winnak/Rekompenco for a list of the standard types.
         /// </summary>
-        public readonly UInt32 DataType;
+        public readonly UInt16 DataType;
         /// <summary>
         /// An optional data field, that can contain an image of the <see cref="Achievement"/>.
+        /// <remark>Base64 encoded</remark>
         /// </summary>
-        public readonly byte[] Data;
+        public readonly string Data;
 
         /// <summary>
         /// Constructor for the Achievement struct.
@@ -69,7 +70,7 @@ namespace Rekompenco
         /// <param name="description"><see cref="Description"/>.</param>
         /// <param name="datatype"><see cref="DataType"/>.</param>
         /// <param name="data"><see cref="data"/>.</param>
-        public Achievement(string id, string name, string description, UInt32 datatype, byte[] data)
+        public Achievement(string id, string name, string description, UInt16 datatype, string data)
         {
             ID = id;
             Name = name;
@@ -90,7 +91,7 @@ namespace Rekompenco
             Name = name;
             Description = description;
             DataType = 0;
-            Data = new byte[0];
+            Data = string.Empty;
         }
 
 
@@ -137,7 +138,7 @@ namespace Rekompenco
                 Name, "|",
                 Description, "|",
                 DataType.ToString(), "|",
-                Convert.ToBase64String(Data));
+                Data);
         }
     }
 
@@ -200,8 +201,8 @@ namespace Rekompenco
                         /* ID */          line[0],
                         /* Name */        line[1],
                         /* Description */ line[2],
-                        /* Data Type */   UInt32.Parse(line[3]),
-                        /* Data */        Convert.FromBase64String(line[4])
+                        /* Data Type */   UInt16.Parse(line[3]),
+                        /* Data */        line[4]
                     ));
             }
         }
