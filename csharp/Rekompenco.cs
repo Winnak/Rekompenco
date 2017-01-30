@@ -1,7 +1,7 @@
-﻿/* MIT License
- * 
+/* MIT License
+ *
  * Copyright (c) 2017 Erik Høyrup Jørgensen
- * 
+ *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
  * in the Software without restriction, including without limitation the rights
@@ -18,13 +18,13 @@
  * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
  * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
- * SOFTWARE. 
+ * SOFTWARE.
  */
 
 /// <summary>
-/// A cross platform, 
-///   cross game engine, 
-///   cross game universe 
+/// A cross platform,
+///   cross game engine,
+///   cross game universe
 /// <c>achievement framework</c>.
 ///  And hopefully also lightweight.
 /// </summary>
@@ -55,7 +55,7 @@ namespace Rekompenco
         /// Describes what kind of data the <see cref="Data"/>-field is.
         /// Please check https://github.com/Winnak/Rekompenco for a list of the standard types.
         /// </summary>
-        public readonly int DataType;
+        public readonly UInt32 DataType;
         /// <summary>
         /// An optional data field, that can contain an image of the <see cref="Achievement"/>.
         /// </summary>
@@ -69,7 +69,7 @@ namespace Rekompenco
         /// <param name="description"><see cref="Description"/>.</param>
         /// <param name="datatype"><see cref="DataType"/>.</param>
         /// <param name="data"><see cref="data"/>.</param>
-        public Achievement(string id, string name, string description, int datatype, byte[] data)
+        public Achievement(string id, string name, string description, UInt32 datatype, byte[] data)
         {
             ID = id;
             Name = name;
@@ -150,7 +150,7 @@ namespace Rekompenco
         /// A dictionary with all the gained achievements.
         /// The key is the same as <see cref="Achievement.ID"/>.
         /// <remark>
-        /// Recommended use is to use the helper functions: 
+        /// Recommended use is to use the helper functions:
         /// <see cref="HasAchivement(string)"/> and <see cref="UnlockAchievement(string, Achievement)"/>.
         /// </remark>
         /// </summary>
@@ -200,7 +200,7 @@ namespace Rekompenco
                         /* ID */          line[0],
                         /* Name */        line[1],
                         /* Description */ line[2],
-                        /* Data Type */   int.Parse(line[3]),
+                        /* Data Type */   UInt32.Parse(line[3]),
                         /* Data */        Convert.FromBase64String(line[4])
                     ));
             }
